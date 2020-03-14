@@ -19,8 +19,8 @@ class CashRegister
     
   end
   
-  def add_item(title, price, quantity)
-    @total += price 
+  def add_item(title, price)
+    @@total += price 
   end
 
 end
