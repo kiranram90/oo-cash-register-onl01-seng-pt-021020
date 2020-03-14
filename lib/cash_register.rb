@@ -1,8 +1,6 @@
 class CashRegister
   
   attr_accessor :total, :title, :price, :quantity, :employee_discount
-  @@total = 0
-  @@items = []
   
   def self.items
     @@items
