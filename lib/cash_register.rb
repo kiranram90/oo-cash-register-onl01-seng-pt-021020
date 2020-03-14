@@ -1,37 +1,40 @@
-class CashRegister
-  attr_accessor :total, :discount, :items, :last_transaction
+class CashRegister 
+  attr_accessor :discount, :item, :last_transaction, :total
 
   def initialize(discount = 0)
-    @total = 0
-    @discount = discount
     @items = []
+    @discount = discount
+    @total = 0 
+  end 
+  
+  def add_item(cost, name, number = 1)
+    self.total = cost * number
+    @items << name
   end
+  
+  def add_item_2(cost, name, number = 1)
+    self.total = cost * number
 
-  def add_item(title, price, quantity = 1)
-    quantity > 1 ? self.total += (price * quantity) : self.total += price
+  def apply_discount 
+  # the cash register was initialized with an employee discount:  
+    # applies the discount to the total price
+    # returns success message with updated total
+    # reduces the total
     
-    while quantity > 0 
-      items.push(title)
-      quantity -= 1
-    end
-    
-    @last_transaction = quantity
-  end
-
-  def apply_discount
-    if self.discount > 0
-      self.total = (total - (total * (discount/100.0))).to_i
-      return "After the discount, the total comes to $#{self.total}."
-    else
-      return "There is no discount to apply."
-    end
+  # the cash register was *NOT* initialized with an employee discount:
+    # returns a string error message that there is no discount to appply
+  end 
+  
+  def items 
+  # (self).items!?
+  # returns an array containing all items that have been added
   end
   
   def void_last_transaction
-    self.total - self.last_transaction
-  end
+  # subtracts the last transaction from the total 
+  end 
+  
+end 
 
-end
-
-
-
+tester = CashRegister.new 
+tester.add_item(4, "carrots", 4)
