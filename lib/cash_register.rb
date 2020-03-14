@@ -9,7 +9,7 @@ class CashRegister
   end
   
   
-  def initialize(:employee_discount)
+  def initialize
     @total = 0 
     @@items << self
   end
